@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RISE Pakistan - Real Inspiring Stories & Experiences</title>
+    <script>
+      // Defensively safeguard fetch against sandbox/iframe environments where fetch has only a getter
+      (function() {
+        try {
+          var origFetch = window.fetch;
+          var currentFetch = typeof origFetch === 'function' ? origFetch.bind(window) : origFetch;
+
+          function getFetch() {
+            return currentFetch;
+          }
+          function setFetch(fn) {
+            currentFetch = fn;
+          }
+
+          // Walk up prototype chain and define both getter and setter wherever fetch is defined
+          var p = window;
+          while (p) {
+            try {
+              var desc = Object.getOwnPropertyDescriptor(p, 'fetch');
+              if (desc && (desc.configurable || !desc.set)) {
+                Object.defineProperty(p, 'fetch', {
+                  get: getFetch,
+                  set: setFetch,
+                  configurable: true,
+                  enumerable: true
+                });
+              }
+            } catch (_) {}
+            p = Object.getPrototypeOf(p);
+          }
+
+          // Ensure window and globalThis have both getter and setter
+          try {
+            Object.defineProperty(window, 'fetch', {
+              get: getFetch,
+              set: setFetch,
+              configurable: true,
+              enumerable: true
+            });
+          } catch (_) {}
+
+          if (typeof globalThis !== 'undefined' && globalThis !== window) {
+            try {
+              Object.defineProperty(globalThis, 'fetch', {
+                get: getFetch,
+                set: setFetch,
+                configurable: true,
+                enumerable: true
+              });
+            } catch (_) {}
+          }
+        } catch (_) {}
+
+        // Suppress benign iframe WebSocket disconnection rejections
+        window.addEventListener('unhandledrejection', function(event) {
+          if (event && event.reason) {
+            var msg = event.reason.message || String(event.reason);
+            if (msg.indexOf('WebSocket') !== -1 || msg.indexOf('websocket') !== -1) {
+              event.preventDefault();
+            }
+          }
+        });
+      })();
+    </script>
+    <meta name="description" content="RISE PAKISTAN — A premium digital media, remote podcast studio, AI interview, AI production and content distribution platform." />
+    <meta property="og:title" content="RISE Pakistan - Real Inspiring Stories & Experiences" />
+    <meta property="og:description" content="RISE PAKISTAN — A premium digital media, remote podcast studio, AI interview, AI production and content distribution platform." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Syne:wght@500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-black text-white antialiased selection:bg-emerald-500/30 selection:text-emerald-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

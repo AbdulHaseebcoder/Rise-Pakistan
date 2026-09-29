@@ -1,0 +1,6 @@
+{
+  "name": "RISE Pakistan - Real Inspiring Stories & Experiences",
+  "description": "RISE PAKISTAN — A premium digital media, remote podcast studio, AI interview, AI production and content distribution platform.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

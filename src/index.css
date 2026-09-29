@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-display: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-dramatic: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #222222;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00A651;
+}
+
+/* =========================================================================
+   CINEMATIC MOTION SYSTEM & CUBIC-BEZIER EASING
+   ========================================================================= */
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.04); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+}
+
+/* Gentle breathing-scale animation triggering every 5 seconds */
+@keyframes breathingScale {
+  0%, 75%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(0, 166, 81, 0.25);
+  }
+  87.5% {
+    transform: scale(1.08);
+    box-shadow: 0 0 36px rgba(0, 166, 81, 0.6);
+  }
+}
+
+.animate-breathing-ai {
+  animation: breathingScale 5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* Route Page Fade-In Transition (Cinematic cubic-bezier) */
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-page-fade-in {
+  animation: pageFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+/* Modal Backdrop Fade */
+@keyframes modalBackdropFade {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(16px);
+  }
+}
+
+.animate-modal-backdrop {
+  animation: modalBackdropFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, backdrop-filter;
+}
+
+/* Modal Card Zoom & Slide Up with Cinematic Easing */
+@keyframes modalCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-modal-card {
+  animation: modalCardEnter 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+/* Text Shimmer Effect across Headings */
+@keyframes titleShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-title-shimmer {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #a7f3d0 25%,
+    #34d399 50%,
+    #a7f3d0 75%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: titleShimmer 8s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+}
+
+/* Subtle Floating Hover */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: floatSlow 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+}
+
+/* Cinematic Stagger Text Animations */
+@keyframes textRevealUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-text-reveal {
+  animation: textRevealUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes textCharFadeIn {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+}
+
+.animate-char-reveal {
+  animation: textCharFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Soft Emerald Text Glow */
+@keyframes emeraldGlowText {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0, 166, 81, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 24px rgba(0, 166, 81, 0.6), 0 0 40px rgba(0, 166, 81, 0.3);
+  }
+}
+
+.animate-text-glow {
+  animation: emeraldGlowText 3.5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+}
+
+/* Smooth Card Hover Motion */
+.cinematic-hover-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.cinematic-hover-card:hover {
+  transform: translateY(-4px) scale(1.008);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7),
+              0 0 25px rgba(0, 166, 81, 0.15);
+  border-color: rgba(0, 166, 81, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-page-fade-in,
+  .animate-modal-backdrop,
+  .animate-modal-card,
+  .animate-text-reveal,
+  .animate-char-reveal,
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-breathing-ai {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
